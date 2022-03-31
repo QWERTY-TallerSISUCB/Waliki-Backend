@@ -1,0 +1,3 @@
+### Listado donadores - Funciona
+GET http://localhost:8081/lista catalogo/
+accept: application/json
