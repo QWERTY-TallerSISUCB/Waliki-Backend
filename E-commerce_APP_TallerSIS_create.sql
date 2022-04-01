@@ -1,6 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-03-30 22:57:15.612
-
 -- tables
 -- Table: Transaccion
 CREATE TABLE Transaccion (

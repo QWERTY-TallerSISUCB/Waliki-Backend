@@ -8,14 +8,18 @@
 		<version>2.6.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>bo.edu.ucb.sis</groupId>
 	<artifactId>Waliki-Backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Waliki-Backend</name>
 	<description>E-commerce</description>
+
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,7 +55,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>5.4.7</version>
+			<version>5.4.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cloudinary</groupId>
@@ -68,6 +72,7 @@
 		</dependency>
 
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -79,6 +84,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
