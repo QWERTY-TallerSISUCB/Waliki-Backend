@@ -1,2 +1,4 @@
-package bo.edu.ucb.sis.WalikiBackend.dao;public class TransaccionDao {
+package bo.edu.ucb.sis.WalikiBackend.dao;
+
+public class TransaccionDao {
 }

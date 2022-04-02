@@ -1,2 +1,4 @@
-package bo.edu.ucb.sis.WalikiBackend.bl;public class TransaccionBl {
+package bo.edu.ucb.sis.WalikiBackend.bl;
+
+public class TransaccionBl {
 }

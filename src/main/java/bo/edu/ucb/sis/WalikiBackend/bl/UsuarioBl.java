@@ -1,2 +1,4 @@
-package bo.edu.ucb.sis.WalikiBackend.bl;public class UsuarioBl {
+package bo.edu.ucb.sis.WalikiBackend.bl;
+
+public class UsuarioBl {
 }

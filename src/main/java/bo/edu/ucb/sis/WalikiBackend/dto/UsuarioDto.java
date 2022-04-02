@@ -1,2 +1,4 @@
-package bo.edu.ucb.sis.WalikiBackend.dto;public class Usuario {
+package bo.edu.ucb.sis.WalikiBackend.dto;
+
+public class UsuarioDto {
 }
