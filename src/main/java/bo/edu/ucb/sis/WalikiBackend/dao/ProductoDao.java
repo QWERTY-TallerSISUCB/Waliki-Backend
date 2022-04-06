@@ -14,8 +14,8 @@ public class ProductoDao {
 
     @Autowired
     private DataSource dataSource2;
-    @Autowired
-    private SequenceDao sequenceDao;
+    //@Autowired
+    //private SequenceDao sequenceDao;
 
     public List<ConsultaProductosDto> findAllProductos(){
         List<ConsultaProductosDto> result = new ArrayList<>();
