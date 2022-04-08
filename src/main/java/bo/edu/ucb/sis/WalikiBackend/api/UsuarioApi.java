@@ -4,7 +4,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,13 +26,10 @@ public class UsuarioApi {
     public ResponseDto addProyecto(@RequestBody UsuarioDto usuario) {
         // Validar que los datos enviados son correctos.
         if (usuario.getUsername() == null || usuario.getUsername().trim().equals("") ) {  // usuario: "     "
-            return new ResponseDto( false, null, "El nombre del proyecto debe ser obligatorio");
+            return new ResponseDto( false, null, "El nombre de usuario es obligatorio");
         }
-        if (usuario.getUsername() == null || usuario.getUsername().trim().equals("") ) {  // password: "     "
-            return new ResponseDto( false, null, "El monto a recaudar debe ser obligatorio y mayor a 0");
-        }
-        if (usuario.getEmail() == null || usuario.getEmail().trim().equals("") ) {  // email: "     "
-            return new ResponseDto( false, null, "La descripcion debe ser obligatoria");
+        if (usuario.getPassword() == null || usuario.getPassword().trim().equals("") ) {  // password: "     "
+            return new ResponseDto( false, null, "La constrasenia es obligatoria");
         }
         return new ResponseDto(true, usuarioBl.addUsuario(usuario), "Proyecto agregado con exito");
     }
