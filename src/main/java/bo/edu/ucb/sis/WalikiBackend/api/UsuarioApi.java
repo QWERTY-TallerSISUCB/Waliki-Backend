@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bo.edu.ucb.sis.WalikiBackend.bl.UsuarioBl;
-import bo.edu.ucb.sis.WalikiBackend.dto.ResponseDto;
-import bo.edu.ucb.sis.WalikiBackend.dto.UsuarioDto;
+import bo.edu.ucb.sis.WalikiBackend.bl.*;
+import bo.edu.ucb.sis.WalikiBackend.dto.*;
 
 @RestController
 @RequestMapping(value = "/api")

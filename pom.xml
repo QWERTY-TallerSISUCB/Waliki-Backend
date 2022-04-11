@@ -10,9 +10,9 @@
 	</parent>
 
 	<groupId>bo.edu.ucb.sis</groupId>
-	<artifactId>Waliki-Backend</artifactId>
+	<artifactId>waliki-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Waliki-Backend</name>
+	<name>waliki-backend</name>
 	<description>E-commerce</description>
 
 
