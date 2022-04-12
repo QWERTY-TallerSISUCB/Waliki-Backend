@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductoDao {
+public class ProductDao {
 
     @Autowired
     private DataSource dataSource2;
     //@Autowired
     //private SequenceDao sequenceDao;
 
-    public List<ConsultaProductosDto> findAllProductos(){
-        List<ConsultaProductosDto> result = new ArrayList<>();
+    public List<ConsultProductsDto> findAllProductos(){
+        List<ConsultProductsDto> result = new ArrayList<>();
         try ( Connection conn2 = dataSource2.getConnection();//cerrado de conexion
               PreparedStatement pstmt = conn2.prepareStatement("" +
                       "SELECT p.id_producto, p.nombre_producto,p.precio, p.caracteristicas, p.tipo_producto, disponible " +
@@ -29,7 +29,7 @@ public class ProductoDao {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                ConsultaProductosDto producto = new ConsultaProductosDto();
+                ConsultProductsDto producto = new ConsultProductsDto();
                 producto.setProductoId(rs.getInt("id_producto"));
                 producto.setNombreProducto(rs.getString("nombre_producto"));
                 producto.setStock(rs.getInt("stock"));

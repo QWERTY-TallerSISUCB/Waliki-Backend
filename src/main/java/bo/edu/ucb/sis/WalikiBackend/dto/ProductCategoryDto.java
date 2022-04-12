@@ -1,7 +1,6 @@
 package bo.edu.ucb.sis.WalikiBackend.dto;
 
-public class ConsultaProductosDto {
-
+public class ProductCategoryDto {
     private Integer productoId;
     private String nombreProducto;
     private Integer stock;
@@ -10,8 +9,7 @@ public class ConsultaProductosDto {
     private String tipoProducto;
     private boolean disponible;
 
-    public ConsultaProductosDto() {
-
+    public ProductCategoryDto() {
     }
 
     public Integer getProductoId() {

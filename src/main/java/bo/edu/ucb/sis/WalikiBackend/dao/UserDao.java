@@ -7,15 +7,17 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import bo.edu.ucb.sis.WalikiBackend.dto.UsuarioDto;
+import bo.edu.ucb.sis.WalikiBackend.dto.UserSignUpDto;
+import org.springframework.stereotype.Service;
 
-public class UsuarioDao {
+@Service
+public class UserDao {
     @Autowired
     private DataSource dataSource2;
     @Autowired
     private SequenceDao sequenceDao;
-    //Crear un nuevo proyecto
-    public UsuarioDto crearProyecto (UsuarioDto usuarioDto) {
+    //Crear un nuevo usuario
+    public UserSignUpDto signUp (UserSignUpDto userSignUpDto) {
         //usuarioDto.set(sequenceDao.getPrimaryKeyForTable("proyecto"));
 
         /*
@@ -27,13 +29,13 @@ public class UsuarioDao {
         try (Connection conn = dataSource2.getConnection())  //cerrado de conexion
         {
             PreparedStatement stmts = conn.prepareStatement("" +
-                    "INSERT INTO proyecto (nombreusuario, contrasenia, tipo_usuario, persona_id_persona, direccion, cuenta_bancaria_id_c_bancaria) " +
-                    "VALUES (?,?,?,?,?,?,?); ");
-                    stmts.setString(1, usuarioDto.getUsername()); //nombre proyecto
-                    stmts.setString(2, usuarioDto.getPassword());// contrasenia
-                    stmts.setString(3, usuarioDto.getRol()); // tipo_usuario
-                    stmts.setString(4, usuarioDto.getEmail());//id_proyecto
-                    stmts.setString(5, usuarioDto.getEmail()); // monto_recaudar
+                    "INSERT INTO usuario (nombreusuario, contrasenia, tipo_usuario, persona_id_persona, direccion, cuenta_bancaria_id_c_bancaria) " +
+                    "VALUES (?,?,?,?,?,?); ");
+                    stmts.setString(1, userSignUpDto.getUsername()); //nombre proyecto
+                    stmts.setString(2, userSignUpDto.getPassword());// contrasenia
+                    stmts.setString(3, userSignUpDto.getRol()); // tipo_usuario
+                    stmts.setString(4, userSignUpDto.getEmail());//id_proyecto
+                    stmts.setString(5, userSignUpDto.getEmail()); // monto_recaudar
                     stmts.setInt(6, 1);
                     stmts.setInt(7, 1);
                     /*
@@ -50,6 +52,11 @@ public class UsuarioDao {
         }
         // No hacer nada intencionalemte;
 
-        return usuarioDto;
+        return userSignUpDto;
+    }
+
+    public UserSignUpDto mostrarUsuario(UserSignUpDto userSignUpDto) {
+
+
     }
 }

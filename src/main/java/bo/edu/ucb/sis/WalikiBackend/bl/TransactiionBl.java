@@ -1,4 +1,4 @@
 package bo.edu.ucb.sis.WalikiBackend.bl;
 
-public class TransaccionBl {
+public class TransactiionBl {
 }
