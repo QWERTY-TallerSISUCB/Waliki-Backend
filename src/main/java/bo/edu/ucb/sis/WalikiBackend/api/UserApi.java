@@ -32,7 +32,7 @@ public class UserApi {
     //Search user by id
     @GetMapping(path = "/user/{userid}")
     public ResponseDto  findUserbyId(@PathVariable Integer userId) {
-        UserInformationDto user = userBl.findUserbyId(userId);
+        UserInformationDto user = (UserInformationDto) userBl.findUserbyId(userId);
         if (user != null ) {
             if (userId<0){
                 return new ResponseDto( false, null, "No puede ser un valor negativo:");

@@ -2,9 +2,11 @@ package bo.edu.ucb.sis.WalikiBackend.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import bo.edu.ucb.sis.WalikiBackend.dto.UserInformationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bo.edu.ucb.sis.WalikiBackend.dto.UserSignUpDto;
@@ -55,8 +57,34 @@ public class UserDao {
         return userSignUpDto;
     }
 
-    public UserSignUpDto mostrarUsuario(UserSignUpDto userSignUpDto) {
-
-
+    //Buscar un donador por su id
+    public UserInformationDto findDonadorById(Integer userId) {
+        UserInformationDto result = new UserInformationDto();
+        try(
+                Connection conn = dataSource2.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(
+                        "SELECT d.id_user, nombre_persona, nombre_proyecto, monto " +
+                                "FROM proyecto pr " +
+                                "JOIN donador d ON d.id_donador= pr.id_proyecto " +
+                                "JOIN donacion dn ON d.id_donador = dn.id_donacion " +
+                                "JOIN usuario us ON us.id_usuario = d.id_usuario " +
+                                "JOIN persona pe ON pe.id_persona = us.id_persona_fk " +
+                                "WHERE d.id_donador = ? " + //
+                                "GROUP BY d.id_donador, pe.nombre_persona, pr.nombre_proyecto, dn.monto;")
+        )
+        {   pstmt.setInt(1, idDonador );
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result.setDonadorId(rs.getInt("id_donador"));
+                result.setNombrePersona(rs.getString("nombre_persona"));
+                result.setNombreProyecto(rs.getString("nombre_proyecto"));
+                result.setMonto_donacion(rs.getDouble("monto"));
+            } else { // si no hay valores de BBDD
+                result = null;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 }
