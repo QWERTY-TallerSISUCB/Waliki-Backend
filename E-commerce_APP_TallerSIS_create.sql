@@ -1,103 +1,92 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2022-04-16 04:18:37.726
+
 -- tables
--- Table: Transaccion
-CREATE TABLE Transaccion (
-    id_transaccion serial  NOT NULL,
-    fecha_hora timestamp  NOT NULL,
-    usuario_id_usuario int  NOT NULL,
-    costo_total int  NOT NULL,
-    CONSTRAINT Transaccion_pk PRIMARY KEY (id_transaccion)
+-- Table: BANK_ACCOUNT
+CREATE TABLE BANK_ACCOUNT (
+                              id_c_bancaria serial  NOT NULL,
+                              account int  NOT NULL,
+                              CVS int  NOT NULL,
+                              status boolean  NOT NULL,
+                              CONSTRAINT BANK_ACCOUNT_pk PRIMARY KEY (id_c_bancaria)
 );
 
--- Table: cuenta_bancaria
-CREATE TABLE cuenta_bancaria (
-    id_c_bancaria serial  NOT NULL,
-    cuenta int  NOT NULL,
-    CVS int  NOT NULL,
-    exp int  NOT NULL,
-    estado boolean  NOT NULL,
-    CONSTRAINT cuenta_bancaria_pk PRIMARY KEY (id_c_bancaria)
+-- Table: PRODUCT
+CREATE TABLE PRODUCT (
+                         product_id serial  NOT NULL,
+                         name_product varchar(100)  NOT NULL,
+                         stock int  NOT NULL,
+                         unit_price decimal(2,2)  NOT NULL,
+                         about varchar(100)  NOT NULL,
+                         product_type int  NOT NULL,
+                         status varchar(20)  NOT NULL,
+                         size varchar(10)  NOT NULL,
+                         weight int  NOT NULL,
+                         CONSTRAINT PRODUCT_pk PRIMARY KEY (product_id)
 );
 
--- Table: persona
-CREATE TABLE persona (
-    id_persona serial  NOT NULL,
-    nombre_completo varchar(100)  NOT NULL,
-    fecha_nacimiento varchar(100)  NOT NULL,
-    CONSTRAINT persona_pk PRIMARY KEY (id_persona)
+-- Table: PRODUCT_TRANSACTION
+CREATE TABLE PRODUCT_TRANSACTION (
+                                     p_t_id int  NOT NULL,
+                                     product_id_fk int  NOT NULL,
+                                     transaction_id_fk int  NOT NULL,
+                                     quantity int  NOT NULL,
+                                     CONSTRAINT PRODUCT_TRANSACTION_pk PRIMARY KEY (p_t_id)
 );
 
--- Table: producto
-CREATE TABLE producto (
-    id_producto serial  NOT NULL,
-    nombre_producto varchar(100)  NOT NULL,
-    stock int  NOT NULL,
-    precio money  NOT NULL,
-    caracteristicas varchar(100)  NOT NULL,
-    tipo_producto int  NOT NULL,
-    disponible boolean  NOT NULL DEFAULT true,
-    CONSTRAINT producto_pk PRIMARY KEY (id_producto)
+-- Table: TRANSACTION
+CREATE TABLE TRANSACTION (
+                             transaction_id serial  NOT NULL,
+                             date timestamp  NOT NULL,
+                             user_id_fk int  NOT NULL,
+                             total_cost int  NOT NULL,
+                             CONSTRAINT TRANSACTION_pk PRIMARY KEY (transaction_id)
 );
 
--- Table: productos_transaccion
-CREATE TABLE productos_transaccion (
-    id_producto_transaccion int  NOT NULL,
-    producto_id_producto int  NOT NULL,
-    Transaccion_id_transaccion int  NOT NULL,
-    cantidad int  NOT NULL,
-    CONSTRAINT productos_transaccion_pk PRIMARY KEY (id_producto_transaccion)
-);
-
--- Table: usuario
-CREATE TABLE usuario (
-    id_usuario serial  NOT NULL,
-    nombreusuario int  NOT NULL,
-    contrasenia varchar(100)  NOT NULL,
-    tipo_usuario int  NULL DEFAULT 1,
-    persona_id_persona int  NOT NULL,
-    direccion varchar(60)  NOT NULL,
-    cuenta_bancaria_id_c_bancaria int  NOT NULL,
-    CONSTRAINT usuario_pk PRIMARY KEY (id_usuario)
+-- Table: USER
+CREATE TABLE "USER" (
+                        user_id serial  NOT NULL,
+                        user_name int  NOT NULL,
+                        password varchar(100)  NOT NULL,
+                        user_type int  NULL DEFAULT 1,
+                        address varchar(60)  NOT NULL,
+                        bank_account_id_fk int  NOT NULL,
+                        person_name int  NOT NULL,
+                        email varchar(250)  NOT NULL,
+                        CONSTRAINT USER_pk PRIMARY KEY (user_id)
 );
 
 -- foreign keys
--- Reference: Transaccion_usuario (table: Transaccion)
-ALTER TABLE Transaccion ADD CONSTRAINT Transaccion_usuario
-    FOREIGN KEY (usuario_id_usuario)
-    REFERENCES usuario (id_usuario)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+-- Reference: Transaccion_usuario (table: TRANSACTION)
+ALTER TABLE TRANSACTION ADD CONSTRAINT Transaccion_usuario
+    FOREIGN KEY (user_id_fk)
+        REFERENCES "USER" (user_id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
 ;
 
--- Reference: productos_transaccion_Transaccion (table: productos_transaccion)
-ALTER TABLE productos_transaccion ADD CONSTRAINT productos_transaccion_Transaccion
-    FOREIGN KEY (Transaccion_id_transaccion)
-    REFERENCES Transaccion (id_transaccion)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+-- Reference: productos_transaccion_Transaccion (table: PRODUCT_TRANSACTION)
+ALTER TABLE PRODUCT_TRANSACTION ADD CONSTRAINT productos_transaccion_Transaccion
+    FOREIGN KEY (transaction_id_fk)
+        REFERENCES TRANSACTION (transaction_id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
 ;
 
--- Reference: productos_transaccion_producto (table: productos_transaccion)
-ALTER TABLE productos_transaccion ADD CONSTRAINT productos_transaccion_producto
-    FOREIGN KEY (producto_id_producto)
-    REFERENCES producto (id_producto)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+-- Reference: productos_transaccion_producto (table: PRODUCT_TRANSACTION)
+ALTER TABLE PRODUCT_TRANSACTION ADD CONSTRAINT productos_transaccion_producto
+    FOREIGN KEY (product_id_fk)
+        REFERENCES PRODUCT (product_id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
 ;
 
--- Reference: usuario_cuenta_bancaria (table: usuario)
-ALTER TABLE usuario ADD CONSTRAINT usuario_cuenta_bancaria
-    FOREIGN KEY (cuenta_bancaria_id_c_bancaria)
-    REFERENCES cuenta_bancaria (id_c_bancaria)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
-
--- Reference: usuario_persona (table: usuario)
-ALTER TABLE usuario ADD CONSTRAINT usuario_persona
-    FOREIGN KEY (persona_id_persona)
-    REFERENCES persona (id_persona)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+-- Reference: usuario_cuenta_bancaria (table: USER)
+ALTER TABLE "USER" ADD CONSTRAINT usuario_cuenta_bancaria
+    FOREIGN KEY (bank_account_id_fk)
+        REFERENCES BANK_ACCOUNT (id_c_bancaria)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
 ;
 
 -- End of file.
