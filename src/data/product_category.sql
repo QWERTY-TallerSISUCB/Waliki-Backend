@@ -1,0 +1,10 @@
+insert into product_category (id, category_name) values (1, 'category 1');
+insert into product_category (id, category_name) values (2, 'category 2');
+insert into product_category (id, category_name) values (3, 'category 3');
+insert into product_category (id, category_name) values (4, 'category 4');
+insert into product_category (id, category_name) values (5, 'category 5');
+insert into product_category (id, category_name) values (6, 'category 6');
+insert into product_category (id, category_name) values (7, 'category 7');
+insert into product_category (id, category_name) values (8, 'category 8');
+insert into product_category (id, category_name) values (9, 'category 9');
+insert into product_category (id, category_name) values (10, 'category 10');
