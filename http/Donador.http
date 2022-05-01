@@ -1,0 +1,24 @@
+### Listado consumidores - Funciona
+GET http://localhost:8081/consumidor/
+accept: application/json
+
+### Agrega un nuevo producto - Funciona
+POST http://localhost:8081/donador
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombreUsuario": "usuarioprueba",
+  "correoElectronico": "estenoesblitzcrank@gmail.com",
+  "numeroTelefono": -1,
+  "direccion": "Obrajes calle 2",
+  "contrasena": "6754281SdTM"
+}
+
+### Busqueda de donador por id
+GET http://localhost:8081/donador/2
+Content-Type: application/json
+
+### Tomar un contrato - Funciona
+GET http://localhost:8081/contrato/1
+accept: application/json
