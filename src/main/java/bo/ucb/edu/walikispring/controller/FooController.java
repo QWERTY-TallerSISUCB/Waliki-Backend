@@ -2,6 +2,7 @@ package bo.ucb.edu.walikispring.controller;
 
 
 import bo.ucb.edu.walikispring.dto.Foo;
+import bo.ucb.edu.walikispring.dto.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
