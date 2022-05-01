@@ -1,7 +1,7 @@
 package bo.ucb.edu.walikispring.controller;
 
-import bo.edu.ucb.ingsoft.waliki.main.dto.Foo;
-import bo.edu.ucb.ingsoft.waliki.main.dto.ResponseMessage;
+
+import bo.ucb.edu.walikispring.dto.Foo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
