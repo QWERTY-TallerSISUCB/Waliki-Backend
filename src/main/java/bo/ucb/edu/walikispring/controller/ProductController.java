@@ -12,15 +12,5 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = checkoutService;
-    }
 
-    @PutMapping("/editproduct")
-    public PurchaseResponse placeOrder(@RequestBody Purchase purchase) {
-
-        PurchaseResponse purchaseResponse = productService.placeOrder(purchase);
-
-        return purchaseResponse;
-    }
 }
