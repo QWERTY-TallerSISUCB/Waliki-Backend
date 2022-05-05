@@ -12,5 +12,4 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private ProductService productService;
 
-
 }
