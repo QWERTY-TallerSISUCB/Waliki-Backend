@@ -5,7 +5,7 @@ import bo.ucb.edu.walikispring.dto.Purchase;
 import bo.ucb.edu.walikispring.dto.PurchaseResponse;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("https://localhost:4200")
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
