@@ -1,12 +1,9 @@
 package bo.ucb.edu.walikispring.dao;
 
-import bo.ucb.edu.walikispring.entity.Country;
+import bo.ucb.edu.walikispring.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin("https://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "countries", path = "countries")
 public interface CountryRepository extends JpaRepository<Country, Integer> {
 }
