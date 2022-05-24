@@ -9,6 +9,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
 import java.util.ArrayList;
