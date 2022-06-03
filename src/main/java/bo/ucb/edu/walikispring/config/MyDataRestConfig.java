@@ -8,6 +8,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
