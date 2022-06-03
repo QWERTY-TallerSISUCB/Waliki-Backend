@@ -24,3 +24,8 @@ accept: application/json
 GET http://localhost:8081/foo/proyecto/1
 ### Pagina PRicipal
 GET http://localhost:8081/foo/paginaprincipal
+
+
+###
+GET https://localhost:8443/WalikiBackendApplication/api/swagger-ui/
+###
